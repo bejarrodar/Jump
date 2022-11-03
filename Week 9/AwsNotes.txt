@@ -1,0 +1,739 @@
+cloud - 
+	Internet based compute power
+
+Original 3 services
+	EC2 
+	S3 
+	SInS
+
+region - 
+	A Group of Availability Zones
+availability zone - 
+	each individual zone that can be used with its own infrastructure
+edge location - 
+	local cache for access
+backbone - 
+	The large scale private infranet that AWS owns
+caching - 
+	Storing temporary data in a faster to access way
+
+price calculator - 
+	Calculates what the cost of a group of services should cost
+cost explorer - 
+	shows a breakdown of where your costs went after using it
+budgets - 
+	help prevent you overspending on services by actively lowering usage as needed
+
+
+cloudFormation
+	allows you to setup and update a stack 
+	allows you to easily create copies of stacks
+Stack
+	A group of services that work together
+
+AWS Saying
+	Security is priority 0 at AWS
+
+Shared Responsibility Model
+	AWS is responsible for the security of the cloud - pysical and networking security
+	Customer is responsible for security in the cloud - Proper configuration of services and software
+	
+3 Core Security Concepts - 
+	IAM(Identity and Access Managment) - 
+		User Managment
+	Network Security - 
+		Firewalls
+	Data Encryption - 
+		Data at rest/ Data in transit
+
+Module 1 Basic of Cloud Computing
+
+	Benifits of cloud computing
+		Access sevices on demand
+		avoid large upfront investments
+		provision computing resources as needed
+		Pay only for what you use
+
+	Cloud based (Public)
+		run everything in cloud
+		migrate existing to cloud
+		design and build new apps in cloud
+	on-premis(Private)
+		Run all parts on own servers
+	Hybrid
+		Some parts of the system is on the cloud 
+		others are stored on premis
+
+
+
+	Variable expenses
+		upfront expenses
+			invest in tech resouses before you can start
+		variable expenses
+			Allows quickly and easily changing what you use
+
+	Econimies of scale
+		Lower prices because a large number of users use the service
+
+	Speed and Agility
+		Can get resources in a matter of minutes
+		Can go Global in minutes
+
+	Core Services
+		Compute
+		Networking and Content delivery
+		Storage
+		Database
+		Security, Identity, and Complience
+		Management and Governance
+
+Module 2 - Compute in the Cloud
+	
+	EC2 - Elastic Compute Cloud
+		AWS Virtual Machine
+		
+	EC2 benifits
+		Use secure sizable compute copacity
+		Boot server instances in minutes
+		Pay only for what you use
+	
+	EC2 instance types
+		General Purpose - Provides a balance of Compute, Memory, and Networking
+		Compute Optimized - designed for compute bound apps that benifit from high performance CPU
+		Memory Optimized - Large datasets in memory 
+		Accelerated Computing - Hardware accelerators, have graphic capabilities
+		Storage Optimized - high sequential read and writes (IOPS)
+	
+	AMI Amazon Machine Image
+		Application and OS Images
+		Venders that have extra Applications preinstalled
+	
+	EC2 Billing Options
+		On-Demand - 
+			No upfront cost 
+			Ideal for short term irregular Workloads
+		Compute Savings plan - 
+			Offers up to 66% savings over on demand 
+			Requires a 1 or 3 year term commitment
+		Reserved - 
+			Billing Discount over on-demand
+			requires 1 or 3 year commitment
+		Spot - 
+			Ideal for workloads with flexable start/end times
+			Savings over on-demand
+			AWS randomly turns on and off
+		Dedicate Instance -
+			More Expensive
+			Single customer CPU Set
+		Dedicated Host - 
+			Most Expensive
+			Single Customer Server
+	
+	EC2 Auto Scaling
+		Use dynamic scaling and predictive scaling
+		Scale capacity as computing requirments change
+		Dynamic scaling uses cloudwatch for scaling
+		predictive sets up times that are normally active to scale
+	
+		Auto scaling group - 
+			Has minimum, desired, maximum
+	
+	ELB Elastic Load Balancing
+		Works together with scaling to balance loads across nodes
+		Acts as single point of contact
+		Automatically distributes traffic across multiple resources
+		performs health checks on the resource before sending traffic
+	
+	ELB Uses
+		Load balancer does mot trigger auto scaling thats CloudWatch
+		Works with the resources it has available
+	
+	Monolitic is a group of services that are all part of the app
+	Microservices break up the services so if one goes down they don't all go down
+	
+	AWS Communication Services
+	
+	SNS vs SQS
+		Simple Notification Service(SNS) - 
+			Messages are published to topics
+			Subscribers immediatly recieve messages for their topic
+			Publisher Subscriber (PubSub) service
+			Subscribers job to subscribe to topic
+			Can send text or emails notifications can also be done
+		Simple Queue Service(SQS) - 
+			Send, Store, and recieve messages between components
+			Queue messages without requiring other services to be available
+			can store messages in order they are recieved
+	
+	Serverless compute services
+		Server are not the concern of the client its AWS concern
+		Allows the user to just worry with code
+		Cost optimization from it getting automatically turned on and off
+		Lambda - 
+			Run code without managing servers
+			pay only for compute time while code is running
+			use other AWS services to automatically trigger code
+			Can be chained to other Lambdas
+	
+	AWS Container Services
+		Containers are lightweight
+		
+	Elastic Container Service (ECS)
+		Run and scale containerized Apps
+		Simple API calls to control
+		Docker like Containers
+	Elastic Kuberneties Service (EKS)
+		Runs kubernety Containers
+	AWS Fargate
+		serverless containers
+		More cost savings
+	
+Module 3 Global inferstructure and reliability
+	
+	Determine Region Based on
+		Compliance with data governance/ legal requirments
+		Proximity to customers
+		Available Services in region
+		Pricing
+	Content Delivery Network -
+		Network to deliver content to clients quickly
+	Cloudfront
+		Facilitates the delivery of content to clients
+	
+	3 main ways to interact with aws
+		Management Console - Browser GUI
+		AWS CLI
+		SDKs / CDKs
+
+Module 4 Networking
+	
+	VPC Virtual Private Cloud
+		Enables you to launch resources in a virtual network
+		Contained in a Region
+	Subnet
+		Subset of adresses allocated to VPC
+		Can be public or Private
+		contained in a Availability Zone
+	Internet Gateway
+		Allows Access to a VPC from the Internet
+	Route
+		Routes Traffic around a VPC
+	Virtual Private Gateway
+		Allows private access through VPN
+		Used for Employees to access network
+	AWS Direct Connect
+		Private connect 
+		Dedicated Permenent Connection to the data center
+		Needs A physical connection installed by AWS
+	
+	Network Access Control list and security groups
+		--Explicit Denial Is only Done at NACL
+		NACL
+			Between subnet and internet gateway
+			Is a Firewall
+			filters traffic going to a subnet
+			the default NACL allows all inbound/outbound
+			Stateless packet filtering 
+				Gets checked both in and out
+			Have an Allow/Deny list
+		Security Group 
+			Inside a subnet
+			Also a firewall
+			filters traffic going to services like EC2
+			by default denies all inbound/outbound
+			Statefull packet filtering
+				They remember previous decisions about packets
+				AKA if request is let in the response is allowed out
+			Acts as a whitelist so only the things on the list are allowed
+	Set Public IP
+		NLB - Network Load Balancer
+		NAT
+		EIP
+		Route 53
+	Route 53
+        Load balance at region level
+		Resolves domain names to IP
+		Performs health checks
+		can route based on 
+			location 
+			health
+			proximity
+			latency
+			weighted - allows percentile control of traffic
+			multivalue - combination of the above
+	VPC peering
+		Allows 2 VPC to talk to each other
+		No transitive relationship
+			AKA cant talk through childs Peering Connection
+	Route Table
+		each subnet can only have one route table but a rout table can connect to many subnets
+		Main route table
+			Can be changed
+			Should not normally be changed
+			implicitly routes subnets to one another without need you to
+			breaks the only one route table per subnet rule
+		
+Module 5 - Storage and Databases
+	
+	Databases Have query tools and functions
+	Storage is less structured
+	Storage
+		Block storage
+		Object storage
+		file storage
+		block storage
+			Files seperated into different blocks
+			Fastest storage
+		Object/File storage
+			Slower storage
+			File saved as whole peice
+			Great for Mass parallel use
+		EBS - elastic block Store 
+			Can only be used with EC2
+			only connects to single EC2 at a time
+			Fixed size
+		EFS - Elastic File Storage
+			Like EBS only for use with EC2
+			Can connect to multiple EC2 at a time
+			Scalable size
+			for Unix based systems
+		FSx 
+			Only works for Windows
+			But the same as EFS
+		S3 - Simple Storage Service
+			Object storage
+			Object consists of
+				Data - Data in File
+				MetaData - Data about file
+				Key - Name of file
+			Stores Objects in buckets
+			Set permissions to control access
+			Choose from a range of storage classes for different cases
+			Not VPC bound aka Serverless
+			Storage class applies for each individule object
+			Storage Classes
+				Standard
+					For frequently accessed
+					minimum of three avilability zones
+				Standard IA
+					Infrequent Access
+					Similar to S3 Standard
+					lower storage price 
+					higher retrieval price
+				One Zone IA
+					Single availability Zone
+					Lower Storage price then Standard IA
+				Intelligent Tiering
+					Best for data with unknown or changing pattern of use
+					Requires a small fee per object to auto manage file
+				Glacier
+					Low cost
+					for archiving
+					retrieve in a few minutes to hours
+				Glacier Deep
+					Lowest Cost
+					For archiving
+					Could take up to 12 hours to retrieve
+			AWS S3 Life cycle policies
+				Changes the storage Class based on time of object
+	Databases
+		RDS - Relational Database Service
+			Operate and scale a relational Datatbase
+			Automate time Consuming admin tasks
+			store and transmit data securely
+			Engines - 
+				Amazon Aurora - there is also an Aurora Serverless
+				PostgreSQL
+				MySQL
+				MariaDB
+				Oracle DB
+				Microsoft SQL Server
+		Aurora
+			Reduced Costs
+			Browser based DBMS
+		dynamoDB
+			Serverless
+			Auto scales
+			can handle over 10 trillion request per day
+		Database Migration Service
+			Migrates databases from outside services
+			Can put sql or noSQL databases into DynamoDB
+		Redshift
+			Analyse/ query Data Warehouse
+		DocumentDB
+			MangoDB workloads in a document database
+		Neptune - for graph dbs
+			Run apps that use highly connected datasets
+		QLDB
+			Review complete history of changes to app data
+		Managed Blockchain
+			Decentrilized ledger DB
+		Elasticache
+			Adds Caching layers for databases
+		DynamoDB Accelerator
+			DynamoDB caching
+
+Module 6 Security 	PRIORITY 0
+	
+	Princible of least 
+	Shared responsibility model
+		AWS
+			Hardware
+			Their software
+		Customer
+			Customer Data
+			Platforms, Apps, IAM
+			OS, Network
+			Client/server data encryption
+	3 Core Security Concepts - 
+		IAM(Identity and Access Managment) - User Managment
+		Network Security - Firewalls
+		Data Encryption - Data at rest/ Data in transit
+	IAM - Identity and Access Managment
+		Sets permissions to allow / denies Access to system
+		Multifactor Authentication - MFA
+		IAM user - individual user
+		IAM Group - group of users
+		IAM policy - the place that you set permissions
+		IAM role - can attach policies to groups/users/resources
+	Root User
+		Highest level of access to an account
+		Should not be used for much
+	IAM USER
+		The individule user 
+		either has policy directly attached or in a group
+		Every person should have their own login
+	IAM Roles
+		Temp access to permissions
+		allows quick control of policies 
+		allows toggling
+	MFA 
+		Extra layer of protection
+		MFA device is the most common form
+	Organizations
+		groups root accounts to each other
+		each root account can have their own IAM groups
+		Can add policies called SCP (Servic Control Policy) to organizations also
+	Compliance
+	Artifact
+			Access AWS compliance reports
+			Review accept manage agreements with aws
+			Access reports 
+	App security - can use all
+		WAF - web app firewall
+			similar to NACL and Security groups
+			for things not in VPC aka serverless
+			or the outermost layer of firewall
+		DoS and DDos
+			AWS Shield
+				Protects against DOS attacks
+				Shield advanced can be integrated with other services
+				write custom ACL rules with WAF to mitigate attacks
+		Inspector
+			Auto conduct app sec assesments
+			identifies vulnerabilities and deviations from best practice
+			gives recomendations on security policy
+		Guard duty
+			Intelligent threat detection
+			Analyzes activity on AWS services
+			Review findings from attacks and take action
+
+Module 7 monitoring and analytics
+
+	CloudWatch
+		Dashboard to see combined metrics
+		Collects metrics about each service in realtime
+		can set thresholds for metrics that are tracked
+		triggers Actions like scaling when threshold reached
+	CloudTrail
+		View and track Logging reports
+		tracks Activities and api request throughout AWS
+		Auto detects Unusual account activity
+		What who when how
+	Trusted Advisor
+		AI to help evaluate what is happening on AWS
+		Performs checks to recommend improvements to how you use AWS
+		Limited based on your support plan
+		Acts like a consultant for
+			cost optimization
+			performance
+			security
+			fault tolerance
+			service limits
+		three types
+			check - items with no problems
+			Warning - recommendations
+			Exclamation - Number of actions
+	Enteprise level support gives a TAM (Technical Account Manager) the is dedicated to your account
+
+Module 8 Pricing and Support
+	
+	https://calculator.aws/#/
+	free tier categories
+		Always free
+		12 months free
+		Trials
+	Pricing Concepts
+		Pay as you go
+		pay less when you reserve
+	Lambda pricing
+		pay only for the compute you use
+		pay per request
+		Save with compute saving plans
+	S3 pricing
+		based on 
+			storage
+			requests
+			data transfer
+			management and replication
+		max file size 5Tb
+	Consolidated Billing
+		orgininzation grouped billing
+		with Volume pricing discounts
+	Pricing Tools
+		Budgets
+			keeps you on budget
+			shows forcast of what you spend
+			can set thresholds for budgets
+		Cost Explorer
+			breaks down historical spending
+			Allows multiple filtering types 
+		Calculator
+			Allows you to pridict what a new system should cost
+	Support plan - https://aws.amazon.com/premiumsupport/plans/
+		Basic plan
+			No trusted Advisor
+			lowest plan
+		Developer
+			best practice guidence
+			general support
+			limited trusted advisor
+			$29/month
+			Recommended if you are experimenting or testing in AWS
+		Business
+			24/7 support
+			full Trusted advisor
+			100/month
+			Minimum recommended tier if you have production workloads in AWS
+		Enterprise On-Ramp
+			A pool of TAM to provide guidence
+			5500/month
+			Recommended if you have production and/or business critical workloads in AWS
+		Enterprise
+			Designated TAM for guidence
+			15000/month
+			Recommended if you have business and/or mission critical workloads in AWS
+	TAM technical Account Manager
+		A person that advises you about AWS
+
+Module 9 Migration and innovation - most likely not on exam
+	
+	Cloud Adoption Framework
+		Provides advice to enable quick smooth migration
+		6 perspectives
+			Business
+			people
+			Governance
+			platform
+			security
+			Operations
+	Migration Strategies
+		6 r's of migration
+			rehosting - lift and shift
+			replatforming - lift tinker and shift
+			refactoring/rearchitecting - reimagining
+			repurchasing - relicensing bring your own license
+			retaining - keeping certain things out of the cloud
+			retiring - things that need to go
+	Snow Family - https://aws.amazon.com/snow/
+		Mostly used for pysical data migration
+		Snow cone
+			Small lightweight
+			edge compute
+			for simple processing with the cloud
+			8TB of storage
+		Snowball
+			Large 
+			some edge compute
+		Snowmobile
+			Massive 
+			100PB container
+			45ft long
+			for transfering massive amounts of data
+	Inovation
+		Serverless apps
+		Artificial Intelligence
+		Machine Learning
+	Well Architected Framework
+		Six pillars of well architected- 
+			sustainability
+				Minimizes environmental impacts of the cloud
+			cost optimization
+				Achieve business outcomes while minimizing costs
+			performance efficency
+				Run services efficiently and scalably
+			reliability
+				Services are resilient to disruptions (Fault Isolation / Limits)
+			security
+				How secure your infrastructure on the cloud is
+			operational excellence
+				How well you work on aws Automation
+
+Module 10 Certification Exam CCP
+	
+	AWS WhitePapers
+		https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html
+	AWS Certified Cloud Practitioner (CLF-C01) Exam Guide
+		https://d1.awsstatic.com/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Exam-Guide.pdf
+	Details
+		cloud Concepts			26%
+		Security				25%
+		Technology				33%
+		Billing and pricing		16%
+	90 min
+	700 / 1000 to pass
+	multiple choice / multiple responce
+	3 year certification
+	you can flag questions to come back to
+
+Things I saw on the Exam Guide
+	Define items that would be part of a Total Cost of Ownership proposal
+		Understand the role of operational expenses (OpEx)
+			focuses on day-to-day business expenses
+			day-to-day expenses a company incurs to keep its business operational
+		Understand the role of capital expenses (CapEx)
+			focuses on long-term business expenses
+			major purchases a company makes that are designed to be used over the long term
+		Understand the impact of software licensing costs when moving to the cloud
+			reduce costs by using their existing software licenses
+
+	Identify the various levels and scope of AWS support
+		AWS Abuse
+			addresses many different types of potentially abusive activity
+			phishing, malware, spam, and denial of service (DoS)/ distributed denial of service (DDoS)
+
+	AWS Professional Services
+		AWS Personal Health Dashboard
+			Personalized view of service health
+			Detailed troubleshooting guidance
+			Aggregate health events across AWS Organizations
+		AWS Service Catalog
+			Create, share, organize, and govern your curated IaC templates
+			centrally manage deployed IT services, applications, resources, and metadata
+			consistent governance of your infrastructure as code (IaC) templates
+
+	Analytics:
+		Amazon Athena
+			interactive query service
+			analyze data in Amazon S3 using standard SQL
+			serverless
+		Amazon Kinesis
+			collect, process, and analyze video and data streams in real time
+			process and analyze data as it arrives and respond instantly
+		Amazon QuickSight
+			serverless BI service
+			understand your data by asking questions in natural language
+			interactive dashboards
+			automatically looking for patterns and outliers powered by machine learning
+
+	Compute and Serverless:
+		AWS Batch
+			Fully managed batch processing at any scale
+			dynamically provisions the optimal quantity and type of compute resources
+			natively integrated
+		AWS Elastic Beanstalk
+			Deploy and scale web applications
+			without the complexity of provisioning and managing underlying infrastructure
+		Amazon Lightsail
+			virtual cloud server
+			preconfigured Linux and Windows application
+			bundles all the resources you need into a single, simple price
+			automatically configures networking, access, and security environments
+		Amazon WorkSpaces
+			Provide a secure, managed Desktop-as-a-Service (DaaS)
+
+	Developer Tools:
+		AWS CodeBuild
+			Build and test code with continuous scaling
+			Fully managed build service
+		AWS CodeCommit
+			host highly scalable private Git repositories
+			Github for AWS
+		AWS CodeDeploy
+			Automate code deployments
+			aunch and track the status of your application deployments through the AWS Management Console
+		AWS CodePipeline
+			Automate continuous delivery pipelines
+			automates the build, test, and deploy phases of your release
+		AWS CodeStar
+			Quickly develop, build, and deploy applications
+			unified user interface
+			entire continuous delivery toolchain
+
+	Customer Engagement:
+		Amazon Connect
+			customer service contact center
+
+	Management, Monitoring, and Governance
+		AWS CloudFormation
+			provisioning with infrastructure as code
+		AWS Config
+			Assess, audit, and evaluate configurations of your resources
+			continually assesses, audits, and evaluates the configurations and relationships of your resources
+		AWS License Manager
+			Set rules to manage, discover, and report software license usage
+		AWS Managed Services
+			Operational excellence in the cloud
+			helps you adopt AWS at scale and operate more efficiently and securely
+		AWS Secrets Manager
+			Centrally manage the lifecycle of secrets
+			manage, retrieve, and rotate database credentials, API keys, and other secrets
+		AWS Systems Manager
+			Gain operational insights into AWS and on-premises resources
+			operations hub for your AWS applications and resources
+			four core feature groups
+				Operations Management
+				Application Management
+				Change Management
+				Node Management
+		AWS Systems Manager Parameter Store
+			provides secure, hierarchical storage for configuration data management and secrets management
+			passwords, database strings, Amazon Machine Image (AMI) IDs, and license codes
+			store values as plain text or encrypted data
+			integrated with Secrets Manager
+
+
+	Security, Identity, and Compliance:
+		AWS Artifact
+			on-demand downloads of AWS security and compliance documents
+			can submit audit artifacts to regulators/auditors
+		AWS Certificate Manager (ACM)
+			provision, manage, and deploy public and private SSL/TLS certificates
+			request a certificate
+			deploy it on ACM-integrated AWS resources
+			handle certificate renewals
+		AWS CloudHSM
+			hardware security modules
+			computing device that processes cryptographic operations
+			provides secure storage for cryptographic keys
+			Generate, store, import, export, and manage cryptographic keys
+			symmetric and asymmetric algorithms to encrypt and decrypt data
+			cryptographic hash functions to compute message digests and HMACs
+			cryptographically sign data and verify signatures
+			generate cryptographically secure random data
+		Amazon Cognito
+			User Sign-Up, Sign-In, and Access Control
+		Amazon Detective
+			analyze, investigate, and identify the root cause of security findings or suspicious activities
+		AWS License Manager
+			manage your software licenses from vendors
+			create customized licensing rules
+			help prevent licensing violations
+		Amazon Macie
+			data security and data privacy service
+			uses machine learning and pattern matching
+			help you discover, monitor, and protect sensitive data
+
+	AWS Storage Gateway
+		Provide on-premises applications with access to virtually unlimited cloud storage
+		Amazon Snow Family

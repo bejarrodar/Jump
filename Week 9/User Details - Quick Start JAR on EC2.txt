@@ -1,0 +1,37 @@
+Content-Type: multipart/mixed; boundary="//"
+MIME-Version: 1.0
+
+--//
+Content-Type: text/cloud-config; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="cloud-config.txt"
+
+#cloud-config
+cloud_final_modules:
+- [scripts-user, always]
+
+--//
+Content-Type: text/x-shellscript; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="userdata.txt"
+
+#!/bin/bash
+
+# check system updates
+yum update
+
+# install java 11
+sudo amazon-linux-extras install java-openjdk11
+
+# download Java app as .jar from S3
+cd /home/ec2-user
+wget https://empower-employ-api.s3.us-east-2.amazonaws.com/rest-mysql-0.0.1-SNAPSHOT.jar
+
+# set a value to our Database address varialbe below (paste your rds endpoint after the "=")
+rdsurl="jdbc:mysql://aug-22-py-priv-db.cuwpussgwc5p.us-east-1.rds.amazonaws.com:3306/students"
+
+# run the jar once the EC2 starts up
+java -jar rest-mysql-0.0.1-SNAPSHOT.jar --spring.datasource.username="root" --spring.datasource.password="rootroot"  --spring.datasource.url=$rdsurl
+--//--

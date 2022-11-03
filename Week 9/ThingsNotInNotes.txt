@@ -1,0 +1,140 @@
+Define items that would be part of a Total Cost of Ownership proposal
+	Understand the role of operational expenses (OpEx)
+		focuses on day-to-day business expenses
+		day-to-day expenses a company incurs to keep its business operational
+	Understand the role of capital expenses (CapEx)
+		focuses on long-term business expenses
+		major purchases a company makes that are designed to be used over the long term
+	Understand the impact of software licensing costs when moving to the cloud
+		reduce costs by using their existing software licenses
+
+Identify the various levels and scope of AWS support
+	AWS Abuse
+		addresses many different types of potentially abusive activity
+		phishing, malware, spam, and denial of service (DoS)/ distributed denial of service (DDoS)
+
+AWS Professional Services
+	AWS Personal Health Dashboard
+		Personalized view of service health
+		Detailed troubleshooting guidance
+		Aggregate health events across AWS Organizations
+	AWS Service Catalog
+		Create, share, organize, and govern your curated IaC templates
+		centrally manage deployed IT services, applications, resources, and metadata
+		consistent governance of your infrastructure as code (IaC) templates
+
+Analytics:
+	Amazon Athena
+		interactive query service
+		analyze data in Amazon S3 using standard SQL
+		serverless
+	Amazon Kinesis
+		collect, process, and analyze video and data streams in real time
+		process and analyze data as it arrives and respond instantly
+	Amazon QuickSight
+		serverless BI service
+		understand your data by asking questions in natural language
+		interactive dashboards
+		automatically looking for patterns and outliers powered by machine learning
+
+Compute and Serverless:
+	AWS Batch
+		Fully managed batch processing at any scale
+		dynamically provisions the optimal quantity and type of compute resources
+		natively integrated
+	AWS Elastic Beanstalk
+		Deploy and scale web applications
+		without the complexity of provisioning and managing underlying infrastructure
+	Amazon Lightsail
+		virtual cloud server
+		preconfigured Linux and Windows application
+		bundles all the resources you need into a single, simple price
+		automatically configures networking, access, and security environments
+	Amazon WorkSpaces
+		Provide a secure, managed Desktop-as-a-Service (DaaS)
+
+Developer Tools:
+	AWS CodeBuild
+		Build and test code with continuous scaling
+		Fully managed build service
+	AWS CodeCommit
+		host highly scalable private Git repositories
+		Github for AWS
+	AWS CodeDeploy
+		Automate code deployments
+		aunch and track the status of your application deployments through the AWS Management Console
+	AWS CodePipeline
+		Automate continuous delivery pipelines
+		automates the build, test, and deploy phases of your release
+	AWS CodeStar
+		Quickly develop, build, and deploy applications
+		unified user interface
+		entire continuous delivery toolchain
+
+Customer Engagement:
+	Amazon Connect
+		customer service contact center
+
+Management, Monitoring, and Governance
+	AWS CloudFormation
+		provisioning with infrastructure as code
+	AWS Config
+		Assess, audit, and evaluate configurations of your resources
+		continually assesses, audits, and evaluates the configurations and relationships of your resources
+	AWS License Manager
+		Set rules to manage, discover, and report software license usage
+	AWS Managed Services
+		Operational excellence in the cloud
+		helps you adopt AWS at scale and operate more efficiently and securely
+	AWS Secrets Manager
+		Centrally manage the lifecycle of secrets
+		manage, retrieve, and rotate database credentials, API keys, and other secrets
+	AWS Systems Manager
+		Gain operational insights into AWS and on-premises resources
+		operations hub for your AWS applications and resources
+		four core feature groups
+			Operations Management
+			Application Management
+			Change Management
+			Node Management
+	AWS Systems Manager Parameter Store
+		provides secure, hierarchical storage for configuration data management and secrets management
+		passwords, database strings, Amazon Machine Image (AMI) IDs, and license codes
+		store values as plain text or encrypted data
+		integrated with Secrets Manager
+
+
+Security, Identity, and Compliance:
+	AWS Artifact
+		on-demand downloads of AWS security and compliance documents
+		can submit audit artifacts to regulators/auditors
+	AWS Certificate Manager (ACM)
+		provision, manage, and deploy public and private SSL/TLS certificates
+		request a certificate
+		deploy it on ACM-integrated AWS resources
+		handle certificate renewals
+	AWS CloudHSM
+		hardware security modules
+		computing device that processes cryptographic operations
+		provides secure storage for cryptographic keys
+		Generate, store, import, export, and manage cryptographic keys
+		symmetric and asymmetric algorithms to encrypt and decrypt data
+		cryptographic hash functions to compute message digests and HMACs
+		cryptographically sign data and verify signatures
+		generate cryptographically secure random data
+	Amazon Cognito
+		User Sign-Up, Sign-In, and Access Control
+	Amazon Detective
+		analyze, investigate, and identify the root cause of security findings or suspicious activities
+	AWS License Manager
+		manage your software licenses from vendors
+		create customized licensing rules
+		help prevent licensing violations
+	Amazon Macie
+		data security and data privacy service
+		uses machine learning and pattern matching
+		help you discover, monitor, and protect sensitive data
+
+AWS Storage Gateway
+	Provide on-premises applications with access to virtually unlimited cloud storage
+	Amazon Snow Family

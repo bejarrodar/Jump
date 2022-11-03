@@ -1,0 +1,39 @@
+cloud - Internet based compute power
+
+EC2 S3 SInS
+
+region - A Group of Availability Zones
+availability zone - each individual zone that can be used with its own infrastructure
+edge location - local cache for access
+backbone - The large scale private infranet that AWS owns
+caching - Storing temporary data in a faster to access way
+
+
+price calculator - Calculates what the cost of a group of services should cost
+cost explorer - shows a breakdown of where your costs went after using it
+budgets - help prevent you overspending on services by actively lowering usage as needed
+
+Six pillars of well architected- 
+	sustainability - Minimizes environmental impacts of the cloud
+	cost optimization - Achieve business outcomes while minimizing costs
+	performance efficency - Run services efficiently and scalably
+	reliability - Services are resilient to disruptions (Fault Isolation / Limits)
+	security - How secure your infrastructure on the cloud is
+	operational excellence - How well you work on aws Automation
+
+cloudFormation allows you to setup and update a stack 
+and allows you to easily create copies of stacks
+Stack
+
+AWS Saying
+	Security is priority 0 at AWS
+
+Shared Responsibility Model
+	AWS is responsible for the security of the cloud - pysical and networking security
+	Customer is responsible for security in the cloud - Proper configuration of services and software
+	
+3 Core Security Concepts - 
+	IAM(Identity and Access Managment) - User Managment
+	Network Security - Firewalls
+	Data Encryption - Data at rest/ Data in transit
+
