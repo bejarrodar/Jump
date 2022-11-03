@@ -1,0 +1,10 @@
+employee:
+  age: 32
+  email: jarrod.caplan1990@company.com
+  fname: Jarrod
+  lname: Caplan
+employee:
+  age: 24
+  email: foo.bar1998@company.com
+  fname: Foo
+  lname: Bar
